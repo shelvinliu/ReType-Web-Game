@@ -29,7 +29,7 @@ if (!localStorage.user_id || !localStorage.pass) {
     document.getElementById("error_box").style.display = "none";
     document.getElementById("login_modal").style.display = "none";
 }
-fetch('https://api.dxh000130.top/api/GetVersion', {
+fetch('http://127.0.0.1:5054/api/GetVersion', {
     credentials: 'include',
     method: 'GET'
 })
@@ -61,7 +61,7 @@ function Login() {
         text.innerText = "Please enter your username and password !";
     } else {
         headers1.append('Authorization', 'Basic ' + btoa(username + ":" + password));
-        fetch('https://api.dxh000130.top/api/Login', {
+        fetch('http://127.0.0.1:5054/api/Login', {
             credentials: 'include',
             method: 'GET',
             headers: headers1
@@ -147,7 +147,7 @@ function register() {
     } else if (username != "" && password != "" && !/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email) && verification == "") {
         text.innerText = "Please Enter Correct Email !";
     } else if (username != "" && password != "" && email != "" && verification != "") {
-        const signup = fetch("https://api.dxh000130.top/api/Register", {
+        const signup = fetch("http://127.0.0.1:5054/api/Register", {
             credentials: 'include',
             method: "POST",
             headers: {
@@ -202,7 +202,7 @@ function verification() {
         text.innerText = "Please Enter your Correct Email !";
     } else {
         document.getElementById("error_box").style.display = "none";
-        const url = fetch("https://api.dxh000130.top/api/Registrationverificationcode/" + email, {
+        const url = fetch("http://127.0.0.1:5054/api/Registrationverificationcode/" + email, {
             // credentials: 'include',
             method: "GET",
             headers: {
@@ -266,7 +266,7 @@ function onSignIn(googleUser) {
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     // console.log("ID Token: " + id_token);
-    const signup = fetch("https://api.dxh000130.top/api/vaildgoogleAsync", {
+    const signup = fetch("http://127.0.0.1:5054/api/vaildgoogleAsync", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -332,7 +332,7 @@ function GetLeaderboard() {
         var htmltable = document.getElementById("rank");
         let headers2 = new Headers();
         headers2.append('Authorization', 'Basic ' + btoa(localStorage.user_id + ":" + localStorage.pass));
-        fetch("https://api.dxh000130.top/api/Leaderboard/" + localStorage.user_id, {
+        fetch("http://127.0.0.1:5054/api/Leaderboard/" + localStorage.user_id, {
             credentials : 'include',
             method: 'GET',
             headers: headers2
@@ -356,7 +356,7 @@ function GetLeaderboard() {
 function getscore() {
     let headers2 = new Headers();
     headers2.append('Authorization', 'Basic ' + btoa(localStorage.user_id + ":" + localStorage.pass));
-    fetch("https://api.dxh000130.top/api/Leaderboard/" + localStorage.user_id, {
+    fetch("http://127.0.0.1:5054/api/Leaderboard/" + localStorage.user_id, {
         credentials : 'include',
         method: 'GET',
         headers: headers2
@@ -612,7 +612,7 @@ function display_play(difficulties, theme) {
         ArticleChooseheader.append('Authorization', 'Basic ' + btoa(localStorage.user_id + ":" + localStorage.pass));
         ArticleChooseheader.append('Content-Type', 'application/json')
         ArticleChooseheader.append('Accept', 'text/plain')
-        const ArticleChoose = fetch("https://api.dxh000130.top/api/ArticleChoose", {
+        const ArticleChoose = fetch("http://127.0.0.1:5054/api/ArticleChoose", {
             credentials: 'include',
             method: "POST",
             headers: ArticleChooseheader,
@@ -689,7 +689,7 @@ function ArticleProcessMainFunction(Enterbutton, hint) {
     document.getElementById("current_score_div").innerHTML = localStorage.score;
     if (username !== "") {
         //console.log(Enterbutton)
-        const ArticleProcess = fetch("https://api.dxh000130.top/api/ArticleProcess", {
+        const ArticleProcess = fetch("http://127.0.0.1:5054/api/ArticleProcess", {
             credentials: 'include',
             method: "POST",
             headers: headers2,
@@ -762,7 +762,7 @@ function ArticleProcessMainFunction(Enterbutton, hint) {
     } else {
         if (hint === 1) {
             // if user click hint button
-            const ArticleProcess = fetch("https://api.dxh000130.top/api/ArticleProcess", {
+            const ArticleProcess = fetch("http://127.0.0.1:5054/api/ArticleProcess", {
                 method: "POST",
                 credentials: 'include',
                 headers: headers2,
@@ -978,7 +978,7 @@ function edit_profile() {
     head.append('Authorization', 'Basic ' + btoa(localStorage.user_id + ":" + localStorage.pass));
     head.append('Content-Type', 'application/json');
     head.append('Accept', 'text/plain');
-    const edit_profile = fetch('https://api.dxh000130.top/api/UpdateUserDetail', {
+    const edit_profile = fetch('http://127.0.0.1:5054/api/UpdateUserDetail', {
         credentials: 'include',
         method: "POST",
         headers: head,
@@ -1022,7 +1022,7 @@ function change_password() {
     head.append('Authorization', 'Basic ' + btoa(localStorage.user_id + ":" + localStorage.pass));
     head.append('Content-Type', 'application/json');
     head.append('Accept', 'text/plain');
-    const change_password = fetch('https://api.dxh000130.top/api/ChangePassword', {
+    const change_password = fetch('http://127.0.0.1:5054/api/ChangePassword', {
         credentials: 'include',
         method: "POST",
         headers: head,
@@ -1061,7 +1061,7 @@ function get_profile() {
     head.append('Authorization', 'Basic ' + btoa(localStorage.user_id + ":" + localStorage.pass));
     head.append('Content-Type', 'application/json');
     head.append('Accept', 'text/plain');
-    const get_profile = fetch('https://api.dxh000130.top/api/GetUserDetail/' + localStorage.user_id, {
+    const get_profile = fetch('http://127.0.0.1:5054/api/GetUserDetail/' + localStorage.user_id, {
         credentials: 'include',
         method: "GET",
         headers: head,

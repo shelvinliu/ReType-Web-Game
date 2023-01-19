@@ -1,8 +1,21 @@
-using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ReType.data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using ReType.Data;
 using ReType.Handler;
+using ReType.data;
 
 namespace ReType
 {
@@ -29,7 +42,7 @@ namespace ReType
             {
                 options.AddPolicy("any", builder =>
                 {
-                    builder.WithOrigins("https://www.dxh000130.top").AllowCredentials().AllowAnyHeader().AllowAnyMethod();
+                    builder.WithOrigins("http://localhost:63342", "null", "http://localhost").AllowCredentials().AllowAnyHeader().AllowAnyMethod();
                     //允许任何来源的主机访问
                 });
             });
@@ -55,7 +68,7 @@ namespace ReType
                 //    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Assignment1 v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseRouting();
             app.UseCors("any");
             app.UseAuthentication();
@@ -63,9 +76,9 @@ namespace ReType
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers().RequireCors("any");
+                endpoints.MapControllers().RequireCors("any"); 
             });
         }
-
+        
     }
 }
