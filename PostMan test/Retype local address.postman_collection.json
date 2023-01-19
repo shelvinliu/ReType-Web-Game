@@ -1,0 +1,540 @@
+{
+	"info": {
+		"_postman_id": "0b6d0090-3b51-474c-ae0b-b91fcad219b3",
+		"name": "Retype local address",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/GetVersion",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"GetVersion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Registration verification code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/Registrationverificationcode/xdua752@aucklanduni.ac.nz",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"Registrationverificationcode",
+						"xdua752@aucklanduni.ac.nz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"dxh000130\",\r\n    \"Password\": \"duan002349\",\r\n    \"Email\": \"xdua752@aucklanduni.ac.nz\",\r\n    \"Code\": \"974942\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/Register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"Register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "dxh000130",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "duan002349",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/Login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Password",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "duan002349",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dxh000130",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"dxh000130\",\r\n    \"Password\": \"Duan002349.!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/Changepassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"Changepassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Reset Password code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/Resetpasswordcode/xdua752@aucklanduni.ac.nz",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"Resetpasswordcode",
+						"xdua752@aucklanduni.ac.nz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"xdua752@aucklanduni.ac.nz\",\r\n    \"Password\": \"Duan002349\",\r\n    \"Code\": \"4889510\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/ResetPassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"ResetPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Detail",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "dxh000130",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "duan002349",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"dxh000130\",\r\n    \"Name\": \"Duan Xuheng\",\r\n    \"DataofBirth\": \"30/01/2000\",\r\n    \"Gerder\": \"M\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/UpdateUserDetail",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"UpdateUserDetail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Update Email verification code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/UpdateEmailverificationcode/dxh000130@icloud.com",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"UpdateEmailverificationcode",
+						"dxh000130@icloud.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Email",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Duan002349",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dxh000130",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"dxh000130\",\r\n    \"Email\": \"dxh000130@icloud.com\",\r\n    \"Code\": \"232323\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/UpdateEmail",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"UpdateEmail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ArticleChoose",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "duan002349",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dxh000130",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Difficulty\": \"M\",\r\n    \"Type\": \"Tech\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/ArticleChoose",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"ArticleChoose"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Leaderboard",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "duan002349",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dxh000130",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/Leaderboard/sgs",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"Leaderboard",
+						"sgs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ArticleProcess",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "duan002349",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dxh000130",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ArticleID\" : 3,\r\n    \"Article\" : \"Mitochondria are tiny cells that live within the cells of animals. They have their own DNA, make their own proteins, and can grow or divide like other cells; allthough they've lived to long inside the cells of animals to live free. Most of the proteins made by mitochondria are for \\\"aerobic respitoration\\\" - using oxygen to turn certain molecules into energy. And when biologists say \\\"energy\\\" they actually mean a molicule called ATP, which stores energy to be used for later. Think of ATP like a compresed spring that can be released at a later point to create motion. So Mitochondria take in Oxygen, fat, and pyruvate (that comes from sugar); and spit out ATP and water. The entire process by which it does it inside the mitochondria is divided into two parts, the Kreb's cycle and Electron Transport chain. There are other mechanisms for creating ATP, mitochondria is the most effcient.\",\r\n    \"Input\": \"allthough\",\r\n    \"AlreadyCorrect\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/ArticleProcess",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"ArticleProcess"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ArticleProcess1",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "duan002349",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "dxh000130",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ArticleID\" : 3,\r\n    \"Article\" : \"Mitochondria are tiny cells that live within the cells of animals. They have their own DNA, make their own proteins, and can grow or divide like other cells; allthough they've lived to long inside the cells of animals to live free. Most of the proteins made by mitochondria are for \\\"aerobic respitoration\\\" - using oxygen to turn certain molecules into energy. And when biologists say \\\"energy\\\" they actually mean a molicule called ATP, which stores energy to be used for later. Think of ATP like a compresed spring that can be released at a later point to create motion. So Mitochondria take in Oxygen, fat, and pyruvate (that comes from sugar); and spit out ATP and water. The entire process by which it does it inside the mitochondria is divided into two parts, the Kreb's cycle and Electron Transport chain. There are other mechanisms for creating ATP, mitochondria is the most effcient.\",\r\n    \"Input\": \"allthoug\",\r\n    \"AlreadyCorrect\": \"allthough,although\",\r\n    \"Enter\": 0,\r\n    \"hint\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5054/api/ArticleProcess",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5054",
+					"path": [
+						"api",
+						"ArticleProcess"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Detail",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

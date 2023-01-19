@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "bbec70be-1fb5-47f8-b46b-3ee5700bf341": {
+      "ProjectGuid": "bbec70be-1fb5-47f8-b46b-3ee5700bf341",
+      "DisplayName": "ReType",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "杂项文件",
+      "ColorIndex": -1
+    },
+    "8cb9c83c-48ff-42aa-8576-04a99cf6a4d2": {
+      "ProjectGuid": "8cb9c83c-48ff-42aa-8576-04a99cf6a4d2",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

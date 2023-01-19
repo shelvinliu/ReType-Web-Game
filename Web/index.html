@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-scope" content="profile email">
+    <meta charset="UTF-8">
+    <meta name="google-signin-client_id"
+        content="975748479216-60enjv40f4i887qegvcnsi63bqigeveq.apps.googleusercontent.com">
+    <title>ReType</title>
+    <link rel="stylesheet" href="css/home.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+</head>
+
+<body>
+    <!--start homepage-->
+    <div id="first_page" style="height: 100%;width: 100%;display: block">
+        <!--log in button start-->
+        <div id="log_in_button_container">
+            <div onclick="log_in_button()" class="button log_in_button" id="log_in_button">
+                <p id="log_in_typeface1"><i class="fa fa-user" aria-hidden="true"></i><br/>
+                    Sign In
+                </p>
+            </div>
+        </div>
+        <!--log in button end-->
+
+        <!--log out button start-->
+        <div id="log_out_button_container" style="display: none">
+            <div onclick="log_out()" class="button log_out_button" id="log_out_button">
+                <p id="log_out_typeface1"><br/>
+                <p id="log_out_typeface2">Log Out</p>
+                </p>
+            </div>
+        </div>
+        <!--log out button end-->
+
+        <!--log in interface start-->
+        <div id="login_modal" class="login_modal">
+            <div id="owl" class="owl">
+            </div>
+            <div class="login_modal-content">
+                <div class="login_form">
+                    <!--input username in log in interface-->
+                    <input id="login-username" type="username" placeholder="Enter Username" name="uname" required autocomplete="off">
+                    <!--input password in log in interface-->
+                    <input id="login-password" type="password" placeholder="Enter Password" name="psw" required autocomplete="off">
+                    <!--log in button  in log in interface-->
+                    <input class="btnlogin" id="btnlogin" type="button" value="Login" onclick="Login()">
+                    <hr style="width: 95%;border-width:2px; margin-top: 20px;margin-left: 2%">
+                    <!--register button log in interface-->
+                    <div onclick="document.getElementById('login_modal').style.display='none';document.getElementById('register_modal').style.display='block'"
+                        style="font-size: 18px;color: #9199aa;margin-left: 3%">
+                        Don't have Account? &nbsp &nbsp
+                        <button id="register_button"
+                            style="color: #e25555;margin-bottom: 15px;margin-top:25px;font-size: 20px"
+                            onclick="document.getElementById('error_box').style.display='none'">Register Now!</button>
+                    </div>
+                </div>
+                <div class="login_form">
+                    <!--Out of the Log in button-->
+                    <button type="button"
+                        onclick="document.getElementById('login_modal').style.display='none';document.getElementById('error_box').style.display='none'"
+                        class="cancelbtn"></button>
+                </div>
+                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"
+                    style="padding-left: 50px; padding-bottom: 15px"></div>
+            </div>
+        </div>
+        <!--log in interface end-->
+
+        <!--register interface start-->
+        <div id="register_modal" class="register_modal">
+            <div id="owl1" class="owl">
+            </div>
+            <div class="register_modal-content">
+                <div class="register_form">
+                    <input id="register-username" type="username" placeholder="Enter Username" name="uname" required autocomplete="off">
+                    <input id="register-password" type="password" placeholder="Enter Password" name="psw1" required autocomplete="off">
+                    <input id="register-email" type="email" placeholder="Enter Email" required autocomplete="off">
+                    <input id="code" type="button" class="code" onclick="verification()" style="vertical-align:middle"
+                        value="Get Verification Code">
+                    <input id="register-verification" type="text" placeholder="Enter verification code" required autocomplete="off">
+                    <input class="btnregister" id="btnregister" type="button" value="Register" onclick="register()">
+                </div>
+                <!--close register interface-->
+                <div class="login_form">
+                    <button type="button"
+                        onclick="document.getElementById('register_modal').style.display='none';document.getElementById('error_box').style.display='none'"
+                        class="cancelbtn"></button>
+                </div>
+            </div>
+        </div>
+        <!--register interface end-->
+
+        <!--leaderboard start-->
+        <div id="leaderboard_page" class="leaderboard_page" style="display: none">
+            <table class="ranktable" id="ranktable">
+                <h1>LeaderBoard</h1>
+                <tr>
+                    <th>Rank</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+                <tbody id="rank" class="rank">
+
+                </tbody>
+            </table>
+            <!--close leaderboard interface-->
+            <button type="button" onclick="document.getElementById('leaderboard_page').style.display='none';"
+                class="cancelbtn"></button>
+        </div>
+        <!--leaderboard end-->
+
+        <!-- Edit User Profile Start-->
+        <div id="user_modal" class="user_modal">
+            <div id="profile_picture" class="profile_picture"></div>
+            <div class="user_modal-content">
+                <div class="register_form">
+                    <input id="username" type="username" name="username" readonly></input>
+                    <input id="name" type="name" placeholder="Enter Name" name="name" autocomplete="off">
+                    <input id="DOB" type="date" placeholder="Enter Date of Birth">
+                    <select id="gender" name="gender">
+                        <option value="" disabled selected>Choose Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Intersex">Intersex</option>
+                        <option value="Trans">Trans</option>
+                        <option value="Non-Conforming">Non-Conforming</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Eunuch">Eunuch</option>
+                    </select>
+                    <input id="change_pass" type="password" placeholder="Change Password" autocomplete="off" value="">
+
+                </div>
+                <!--change password element-->
+                <input class="btnuser" id="btnuser" type="button" value="Submit" onclick="edit_profile()">
+                <div class="login_form">
+                    <button type="button"
+                        onclick="document.getElementById('user_modal').style.display='none';document.getElementById('error_box').style.display='none'"
+                        class="cancelbtn"></button>
+                </div>
+            </div>
+        </div>
+        <!-- Edit User Profile End-->
+
+        <!--game introduction start-->
+        <div id="introduction_model" style="display: none">
+
+            <div>
+                <button type="button" class="cancelbtn"
+                    onclick="document.getElementById('introduction_model').style.display='none'"></button>
+                <h1>Introduction</h1>
+            </div>
+
+            <!--content of introduction-->
+            <div>
+                <!--about game-->
+                <section class="ac-container">
+                    <div>
+                        <input id="ac-1" name="accordion-1" type="radio" />
+                        <label for="ac-1">&#10133 &nbsp;About Game</label>
+                        <article class="ac-small" id="ac-small">
+                            <p>
+                                This game aims to develop a simple editing game that
+                                    challenges users for fun and
+                                    dynamics and helps them improve their proofreading skills at the same time.
+                                    ReType will challenge different users to improve their spelling and proofreading
+                                    ability, timely correct mistakes,
+                                    and to record errors so that they can be viewed multiple times.
+                            </p>
+                        </article>
+                    </div>
+
+                    <!--contact us-->
+                    <div>
+                        <input id="ac-2" name="accordion-1" type="radio" />
+                        <label for="ac-2">&#10133 &nbsp;Contact Us</label>
+                        <article class="ac-medium">
+                            <p>
+                                If you have any enquiries or experiencing any
+                                issues, feel free to contact us at info@retype.com.
+                            </p>
+                        </article>
+                    </div>
+
+                    <!--How to play-->
+                    <div>
+                        <input id="ac-3" name="accordion-1" type="radio" />
+                        <label for="ac-3">&#10133 &nbsp;How to play?</label>
+                        <article class="ac-large">
+                            <p>
+                                    <1> Please choose the difficulty of the game you want to challenge and the theme of
+                                        your favorite article.<br>
+                                        <2> You need to find the words with wrong spelling in the article.<br>
+                                            <3> Please enter the correct spelling in the input box.<br>
+                                                <4> If you type the correct spelling and press enter on the keyboard ,
+                                                    the wrong words in the article will be automatically corrected and
+                                                    highlighted in green.<br>
+                                                    <5> If you don't know any wrong words in the article, you can click
+                                                        the Hint button for help, which will highlight the wrong word in
+                                                        the article.
+
+                            </p>
+                        </article>
+                    </div>
+
+                    <!--Scoring-->
+                    <div>
+                        <input id="ac-4" name="accordion-1" type="radio" />
+                        <label for="ac-4">&#10133 &nbsp;Scoring</label>
+                        <article class="ac-large">
+                            <p>
+
+                                    1: For Easy level:<br>
+                                    &nbsp;&nbsp;&nbsp; (1) if you type the correct answer, will +2 points;<br>
+                                    &nbsp;&nbsp;&nbsp; (2) if you type the wrong answer, will -2 points;<br>
+                                    &nbsp;&nbsp;&nbsp; (3) if you click Hint button to get help, will -1 point;<br><br>
+                                    2: For Normal level:<br>
+                                    &nbsp;&nbsp;&nbsp; (1) if you type the correct answer, will +3 points;<br>
+                                    &nbsp;&nbsp;&nbsp; (2) if you type the wrong answer, will -3 points;<br>
+                                    &nbsp;&nbsp;&nbsp; (3) if you click Hint button to get help, will -1 point;<br><br>
+                                    3: For Hard level:<br>
+                                    &nbsp;&nbsp;&nbsp; (1) if you type the correct answer, will +4 points;<br>
+                                    &nbsp;&nbsp;&nbsp; (2) if you type the wrong answer, will -4 points;<br>
+                                    &nbsp;&nbsp;&nbsp; (3) if you click Hint button to get help, will -1 point;
+
+                            </p>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!--game introduction end-->
+
+
+        <!--retype title start-->
+        <div style="width: 100%;height: 40vh">
+            <div class="word">
+                <span id="R">
+                    <font style="font-family: Comic Sans MS, Comic Sans, cursive;">R</font>
+                </span>
+                <span id="E1">
+                    <font style="font-family: Comic Sans MS, Comic Sans, cursive;">E</font>
+                </span>
+                <span id="T">
+                    <font style="font-family: Comic Sans MS, Comic Sans, cursive;">T</font>
+                </span>
+                <span id="Y">
+                    <font style="font-family: Comic Sans MS, Comic Sans, cursive;">Y</font>
+                </span>
+                <span id="P">
+                    <font style="font-family: Comic Sans MS, Comic Sans, cursive;">P</font>
+                </span>
+                <span id="E2">
+                    <font style="font-family: Comic Sans MS, Comic Sans, cursive;">E</font>
+                </span>
+            </div>
+
+            <!--prompt dialog box start-->
+            <div style="background-color: #2b2b36;width: 20%;height: 130px" id="error_box">
+                <button type="button" onclick="document.getElementById('error_box').style.display='none'"
+                    id="error_button" class="error_button"></button>
+                <p id="error_text"></p>
+            </div>
+            <!--prompt dialog box end-->
+        </div>
+        <!--retype title end-->
+
+        <!--four Button in bottom start-->
+        <div id="home_page_bottom_button">
+            <div id="home_page">
+
+                <!--personal detail button start-->
+                <a href="#" class="user_button" onclick="display_user()">
+                    <div id="user_container" class="container">
+                        <!--div before the button flips-->
+                        <div id="user_front" class="front">
+                            <p id="user_typeface1" class="homepage_button_typeface1">
+                                User Details<br/>
+                            </p>
+                        </div>
+                        <!--div after the button flips-->
+                        <div id="user_back" class="back">
+                            <p id="user_typeface3" class="homepage_button_typeface2"><i class="fa fa-address-book"
+                                    style="font-size:4vw"></i></p>
+                        </div>
+                    </div>
+                </a>
+                <!--personal detail button end-->
+
+                <!--leaderboard button start-->
+                <div onclick="GetLeaderboard()">
+                    <div id="leaderboard_container" class="container">
+                        <!--div before the button flips-->
+                        <div id="leaderboard_front" class="front">
+                            <p id="leaderboard_typeface1" class="homepage_button_typeface1">
+                                Leaderboard<br/>
+                            </p>
+                        </div>
+                        <!--div after the button flips-->
+                        <div id="leaderboard_back" class="back">
+                            <p id="leaderboard_typeface2" class="homepage_button_typeface2"><i
+                                    class="fa-solid fa-ranking-star" style="font-size: 6vw"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!--leaderboard button end-->
+
+                <!--introduction button start-->
+                <a href="#" onclick="introduction_button()">
+                    <div id="introduction_container" class="container">
+                        <!--div before the button flips-->
+                        <div id="introduction_front" class="front">
+                            <p id="introduction_typeface1" class="homepage_button_typeface1">
+                                Introduction
+                            </p>
+                        </div>
+                        <!--div after the button flips-->
+                        <div id="introduction_back" class="back">
+                            <p id="introduction_typeface2" class="homepage_button_typeface2"> <i
+                                    class="fa-solid fa-circle-question" style="font-size: 6vw"></i></p>
+                        </div>
+                    </div>
+                </a>
+                <!--introduction button end-->
+
+                <!--play button start-->
+                <a href="#" onclick="display_game()" id="play_button">
+                    <div id="play_container" class="container">
+                        <!--div before the button flips-->
+                        <div id="play_front" class="front">
+                            <p id="play_typeface1">PLAY</p>
+                        </div>
+                        <!--div after the button flips-->
+                        <div id="play_back" class="back">
+                            <p id="play_typeface2"> <i class="fa-solid fa-circle-play" style="font-size:6vw"></i>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <!--play button end-->
+            </div>
+
+        </div>
+        <!--four button in bottom end-->
+
+    </div>
+    <!--homepage end-->
+
+
+
+    <!--play main interface start-->
+    <div id="play_homepage" style="display: none">
+
+        <!--back home button in play main interface start-->
+        <div class="homebtn-container_play">
+            <div class="homebtn-container">
+                <button class="backhome" onclick="BackToHome()">
+                    <span class="text">Stop Game</span>
+                    <div class="icon-container">
+                        <div class="icon icon--left">
+                            <svg>
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </div>
+                        <div class="icon icon--right">
+                            <svg>
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <svg style="display: none;background-color: rgb(143, 17, 246)">
+            <symbol id="arrow-right" viewBox="0 0 20 10">
+                <path d="M14.84 0l-1.08 1.06 3.3 3.2H0v1.49h17.05l-3.3 3.2L14.84 10 20 5l-5.16-5z"></path>
+            </symbol>
+        </svg>
+        <!--back home button in play main interface end-->
+
+        <!--left interface: article start-->
+        <div class="play_left">
+
+            <!--three different difficulty level button-->
+            <input class="variation1" id="i1" type="radio" value="1" name="border" checked="checked"
+                onclick="display_content_h3();document.getElementById('b1').style.display='block';document.getElementById('b2').style.display='none';document.getElementById('b3').style.display='none';document.getElementById('content_color').style.backgroundColor='#e2ba34'" />
+            <label for="i1"><span class="circle"></span></span><span style="font-size: 2vw">Easy</span></label>
+
+            <input class="variation" id="i2" type="radio" value="2" name="border"
+                onclick="display_content_h3();document.getElementById('b1').style.display='none';document.getElementById('b2').style.display='block';document.getElementById('b3').style.display='none';document.getElementById('content_color').style.backgroundColor='#e5a9a9'" />
+            <label for="i2"> <span class="circle"></span><span style="font-size: 2vw">Normal</span></label>
+
+            <input class="variation" id="i3" type="radio" value="3" name="border"
+                onclick="display_content_h3();document.getElementById('b1').style.display='none';document.getElementById('b2').style.display='none';document.getElementById('b3').style.display='block';document.getElementById('content_color').style.backgroundColor='#C6A477'" />
+            <label for="i3"><span class="circle"></span><span style="font-size: 2vw">Hard</span></label>
+
+            <!--two article theme button-->
+            <div class="folder">
+
+                <!--two article theme in easy level button-->
+                <div class="tabs" id="b1">
+                    <button class="tab" id="tab1"
+                        onclick="display_play('L','Inspirational');openTab(event);document.getElementById('content_color').style.backgroundColor='#e2ba34'">
+                        <div><span id="theme_1">Inspirational</span></div>
+                    </button>
+
+                    <button class="tab" id="tab2"
+                        onclick="display_play('L','Sport');openTab(event);document.getElementById('content_color').style.backgroundColor='#94c584'">
+                        <div><span id="theme_2">Sport</span></div>
+                    </button>
+                </div>
+
+                <!--two article theme in normal level button-->
+                <div class="tabs" id="b2" style="display: none">
+                    <button class="tab" id="tab3"
+                        onclick="display_play('M','Fiction');openTab(event);document.getElementById('content_color').style.backgroundColor='#e5a9a9'">
+                        <div><span id="theme_3">Fiction</span></div>
+                    </button>
+
+                    <button class="tab" id="tab4"
+                        onclick="display_play('M','Prose');openTab(event);document.getElementById('content_color').style.backgroundColor='#6cb6bb'">
+                        <div><span id="theme_4">Prose</span></div>
+                    </button>
+                </div>
+
+                <!--two article theme in hard level button-->
+                <div class="tabs" id="b3" style="display: none">
+                    <button class="tab" id="tab5"
+                        onclick="display_play('H','Fiction');openTab(event);document.getElementById('content_color').style.backgroundColor='#C6A477'">
+                        <div><span id="theme_5">Fiction</span></div>
+                    </button>
+
+                    <button class="tab" id="tab6"
+                        onclick="display_play('H','Academics');openTab(event);document.getElementById('content_color').style.backgroundColor='#9791A0'">
+                        <div><span id="theme_6">Academics</span></div>
+                    </button>
+                </div>
+
+                <!--display whole article box-->
+                <div class="content">
+                    <div class="content__inner" id="content_color">
+                        <!--article box-->
+                        <div id="text_box">
+                            <!--display image after click pause-->
+                            <img src="images/think.png" id="think" width="500px" height="100%"
+                                style="display: none;margin-left: auto;margin-right: auto;">
+                            <!--display image after finished game-->
+                            <img src="images/fireworks.gif" id="firework" width="98%" height="98%"
+                                style="display: none;margin-left: auto;margin-right: auto;">
+                            <div id="text" style="display: block;">
+                                <h2 id="text_h2" style="font-family: 'Papyrus';text-align: center;margin-top: 15%;line-height: 80px;word-spacing: 15px">
+                                    Please select the difficulty level and the theme of article first</h2>
+                            </div>
+
+                            <hr style="width: 99.6%;border-width:2px;margin-bottom: 2%;border-color: #3C3C3C">
+
+                            <!--four button below article-->
+                            <div class="adjust_text">
+                                <button class="adjust_text_button" onclick="change_background()"><p style="font-size: medium;">Background</p></button>
+                                <button class="adjust_text_button" onclick="change_font_family()"><p style="font-size: medium;">Font Family</p></button>
+                                <button class="adjust_text_button" onclick="change_font_size_big()"><p style="font-size: medium;">A+</p></button>
+                                <button class="adjust_text_button" onclick="change_font_size_small()"><p style="font-size: medium;">A-</p></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--left interface: article end-->
+
+
+        <!--right interface: timer, score, dictionary start-->
+        <div class="play_right">
+            <!--display time-->
+            <div class="timer-group">
+                <div class="timer hour">
+                    <div class="hand"><span id="hand_span1"></span></div>
+                    <div class="hand"><span id="hand_span2"></span></div>
+                </div>
+                <div class="timer minute">
+                    <div class="hand"><span id="hand_span3"> </span></div>
+                    <div class="hand"><span id="hand_span4"></span></div>
+                </div>
+                <div class="timer second">
+                    <div class="hand"><span id="hand_span5"></span></div>
+                    <div class="hand"><span id="hand_span6"></span></div>
+                </div>
+                <div class="face">
+                    <p>
+                        <span id="minute">00</span>:
+                        <span id="second">00</span>
+                    </p>
+                    <!--start time-->
+                    <button id="btn1" onclick="pause_time()" style="display: none">Pause</button>
+                </div>
+
+            </div>
+
+            <!--score, error start-->
+            <!--display animation of changing score-->
+            <div id="play_score_container">
+                <div id="score_animation_container" style="display: none">
+                    <table id="score_animation_table" style="width: 100%;height: 100%">
+                        <tr style="width: 100%;height: 100%">
+                            <td style="width: 50%;height: 100%">
+                                <div id="score_animation_thumb">
+                                </div>
+                            </td>
+                            <td style="width: 60%;height: 100%">
+                                <p id="score_animation_number">
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!--display current score,error-->
+                <div id="play_score" data-text="score">
+                    <div id="play_score_table_container">
+                        <table id="play_score_table">
+                            <tr
+                                style="width: 100%;height: 25%;display: inline-table;border:rgb(18, 17, 17) solid 3px;background-color: rgb(18, 17, 17);opacity: 0.7;border-radius: 10px;">
+                                <td
+                                    style="width: 50%;height: 100%;vertical-align: center;font-size: 1.1vw;font-weight: bolder; color:white">
+                                    Your Score:
+                                </td>
+                                <td style="width: 50%;height: 100%; color:white" id="current_score_div">
+                                </td>
+                            </tr>
+
+                            <tr style="width: 100%;height: 3%;display: inline-table">
+                            </tr>
+
+                            <tr
+                                style="width: 100%;height: 25%;display:  inline-table;border:rgb(18, 17, 17) solid 3px;font-weight: bolder;background-color: rgb(18, 17, 17);opacity: 0.7;border-radius: 10px;">
+                                <td style="width: 50%;height: 100%;font-size: 1.1vw; color:white">
+                                    Remaining Errors:
+                                </td>
+                                <td id="remain_error_div" style="width: 50%;height: 100%; color:white">
+                                </td>
+                            </tr>
+                            <tr style="width: 100%;height: 3%;display: inline-table">
+                            </tr>
+
+                            <tr
+                                style="width: 100%;height: 25%;display:  inline-table;border:rgb(18, 17, 17) solid 3px;font-weight: bolder;background-color: rgb(18, 17, 17);opacity: 0.7;border-radius: 10px;">
+                                <td style="width: 50%;height: 100%;font-size: 1.1vw; color:white">
+                                    Total Errors:
+                                </td>
+                                <td id="total_error_div" style="width: 50%;height: 100%; color:white">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <!--score, error end-->
+
+            <!--dictionary start-->
+            <div id="dictionaries">
+                <table style="width: 100%;height: 100%">
+                    <tr style="width: 100%;height: 30%;display: inline-block">
+                        <td style="width:2%"></td>
+                        <td style="width:50%">
+                            <input id="dictionaries_input" autocomplete="none" placeholder="It is Dictionary"
+                                oninput="display_defintion()">
+                        </td>
+                        <td style="width:2%"></td>
+                        <td style="width:20%">
+                            <button id="dictionaries_check" onclick="define_dictionaries()">Define</button>
+                        </td>
+                        <td style="width:2%"></td>
+                        <td id="loudspeaker" style="width: 20%">
+                            <button id="dictionaries_loudspeaker" onclick="audio_dictionaries()">&#128226;</button>
+                            <audio id="voice" src="#"></audio>
+                        </td>
+                    </tr>
+
+                    <tr
+                        style="width: 100%;height: 65%;border-radius: 15px;overflow: auto;display: inline-block;margin-top: 1%">
+                        <td id="definition" style="width:100%;height:95%">
+                            <h3 id="definition_h3">Definition</h3>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--dictionary end-->
+        </div>
+        <!--right interface: score, dictionary end-->
+
+        <!--input box and prompt start-->
+        <div id="play_bottom" style="display: none">
+            <table style="width: 100%;height: 100%">
+                <tr style="width: 100%;height: 100%">
+                    <!--display prompt-->
+                    <td style="width: 25%;margin-right: 5%;height: 100%">
+                        <div id="prompt_box" style="display: none">
+                            <img style="width: 100%;height: 100%" src="images/prompt.png">
+
+                        </div>
+                    </td>
+
+                    <!--user input start-->
+                    <td style="width: 70%">
+                        <div id="input_container">
+                            <input id="user_input" oninput="input_reminder()" placeholder="Please type the correct spelling here" autocomplete="off">
+                            <div class="Hint" id="Hint" value="Hint" onclick="Hint()">
+                                Hint</div>
+                        </div>
+                    </td>
+                    <!--user input end-->
+                </tr>
+            </table>
+        </div>
+        <!--input box and prompt end-->
+    </div>
+    <!--play main interface end-->
+
+    <script src="js/home.js"></script>
+</body>
+
+</html>
